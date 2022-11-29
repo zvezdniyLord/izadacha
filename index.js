@@ -1,28 +1,28 @@
 const cartAppendPlace = document.querySelector(".carts");
 const date = new Date();
 class Cart {
-    #id;
-    #author;
-    #date;
     #root;
-    constructor(id, author, date, root) {
-        this.#id = id;
-        this.#author = author;
-        this.#date = date;
+    constructor(root) {
         this.#root = root;
     }
 
-    createCart() {
+    createCart(id, author, date) {
         this.#root.insertAdjacentHTML("afterbegin", `
         <section class="cart">
-            <h2 class="cart-title">PON-${this.#id}: Добавил фильтр на товары</h2>
-            <h3 class="cart-author">Автор: ${this.#author}</h3>
-            <p class="cart-date">Дата:${this.#date}</p>
+            <h2 class="cart-title">${createId(id)}: Добавил фильтр на товары</h2>
+            <h3 class="cart-author">Автор: ${author}</h3>
+            <p class="cart-date">Дата:${date.getFullYear()}</p>
         </section> 
         `);
     }
 }
 
-const cart = new Cart(8849, "Первый автор", date, cartAppendPlace);
-cart.createCart();
-cart.createCart();
+const cart = new Cart(cartAppendPlace);
+cart.createCart(8849, "Первый автор", date);
+cart.createCart(8850, "Второй автор", date);
+
+function createId(salt) {
+    const result = `PON-${Math.random(salt) * 36}`;
+    console.log(result);
+    return result;
+}

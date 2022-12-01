@@ -4,22 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./index.css">
-    <title>Izadacha</title>
+    <title>Sekka</title>
 </head>
 <body class="body">
-    <section class="carts">
-        <section class="cart">
-            <h2 class="cart-title">PON-9999: Разворачивание инфраструктуры клиента</h2>
-            <h3 class="cart-author">Автор авторович</h3>
-            <p class="cart-date">29.11.2022 10.00</p>
+    <input class="input-cart__task" type="text" placeholder="Введите задачу">
+    <input class="input-cart__author" type="text" placeholder="Автор задачи">
+    <input class="input-btn" type="submit" value="Создать задачу">
+    <div class="container">
+        <div class="dashboard-activity">
+            <h3 class="dashboard-activity--title">
+                Лента активности
+            </h3>
+        </div>
+        <section class="carts">
+            <section class="cart">
+                <div class="img"></div>
+                <div class="cart-block">
+                    <h2 class="cart-title">PON:9999 Заголовок задачи</h2>
+                    <h3 class="cart-author">Автор: Автор Авторович</h3>
+                    <p class="cart-date">Дата: 20.00.2000</p>
+                </div>
+                <div class="edit">ooo</div>
+                <div class="edit-block">
+                    <button class="edit-block-delete">Удалить</button>
+                </div>
+            </section>
         </section>
-        <section class="cart">
-            <h2 class="cart-title">PON-9999: Добавил фильтр на товары</h2>
-            <h3 class="cart-author">Автор авторович</h3>
-            <p class="cart-date">29.11.2022 10.00</p>
-        </section>
-    </section>
+    </div>
 <script src="./index.js"></script>
 </body>
 </html>

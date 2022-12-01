@@ -4,6 +4,26 @@ body {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
+  font-family: 'Fira Code', monospace;
+  --color-text: #474747;
+  --color-main: linear-gradient(180deg, #B4F1FF 0%, #7DE5FC 45.83%, #3CDBFF 100%);
+}
+
+.container {
+    max-width: calc(100vw - 20px);
+    margin: 0 auto;
+}
+
+.dashboard-activity {
+    width: 600px;
+    height: 25px;
+    background: var(--color-main);
+}
+
+.dashboard-activity--title {
+    color: var(--color-text);
+    margin-left: 1rem;
+    font-size: 1rem;
 }
 
 .carts {
@@ -13,27 +33,80 @@ body {
 }
 
 .cart {
-  width: 450px;
-  min-height: 100px;
-  border-radius: 1rem;
-  margin: 1rem;
-  flex: 1 1 450;
-  border-radius: 10px;
-  background: #b7ecce;
+  width: 520px;
+  min-height: 80px;
+  margin: 1rem 1rem 1rem 0;
+  flex: 0 1 520px;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-block {
+    width: 100%;
+    margin-left: 2rem;
+}
+
+.img {
+    min-width: 60px;
+    min-height: 60px;
+    background-color: rgb(123, 123, 123);
+    border-radius: 60px;
 }
 
 .cart-title {
   font-size: 1.1rem;
   font-weight: 500;
-  text-align: center;
+  color: var(--color-text);
 }
 
 .cart-author {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-left: 1.5rem;
+  color: var(--color-text);
 }
 
 .cart-date {
   margin-left: 1.5rem;
+  color: var(--color-text);
+}
+
+.input-btn {
+    background: var(--color-main);
+    border: none;
+    width: 175px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.edit-block {
+    width: 125px;
+    height: 60px;
+    border: 1px solid;
+    position: relative;
+    top: 3rem;
+    right: 2rem;
+    display: none;
+}
+
+.db {
+    display: block;
+}
+
+.edit-block-delete {
+    cursor: pointer;
+}
+
+.delete-cart {
+    cursor: pointer;
 }

@@ -1,20 +1,10 @@
 const cartAppendPlace = document.querySelector(".carts");
-const date = new Date();
+const date = new Date().getFullYear();
 const inputTask = document.querySelector('.input-cart__task');
 const inputAuthor = document.querySelector('.input-cart__author');
 const inputBtn = document.querySelector(".input-btn");
-console.log(inputAuthor.value);
-
-inputBtn.addEventListener("click", e => {
-    e.preventDefault();
-    const cart = new Cart(cartAppendPlace);
-    if(inputAuthor.value.length === 0 && inputTask.value.length === 0) {
-        alert("Введите данные для создания задачи");
-    } else {
-        cart.createCart(1, inputAuthor.value, inputTask.value, date);
-    }
-    
-});
+const edits = document.querySelector('.edit');
+const editBlock = document.querySelector('.edit-block');
 
 class Cart {
     #root;
@@ -25,18 +15,50 @@ class Cart {
     createCart(id, author, task, date) {
         this.#root.insertAdjacentHTML("afterbegin", `
         <section class="cart">
-            <h2 class="cart-title">${createId(id)}: ${author}</h2>
-            <h3 class="cart-author">Автор: ${task}</h3>
-            <p class="cart-date">Дата:${date.getFullYear()}</p>
-        </section> 
+            <div class="img"></div>
+            <div class="cart-block">
+                <h2 class="cart-title">${createId(id)} ${task}</h2>
+                <h3 class="cart-author">Автор: ${author}</h3>
+                <p class="cart-date">Дата: ${date}</p>
+            </div>
+            <div class="delete-cart">X</div>
+        </section>
         `);
-        return {id, author, task, date};
+        const cartObject = {
+            id: id,
+            author: author,
+            task: task,
+            date: date
+        }
+        return cartObject;
+    }
+
+    deleteCart(handler, target) {
+        handler.addEventListener("click", () => {
+        target.remove();
+        });
     }
 }
 
+const cart = new Cart(cartAppendPlace);
+
+inputBtn.addEventListener("click", e => {
+    e.preventDefault();
+    if(inputAuthor.value.length === 0 || inputTask.value.length === 0) {
+        alert("Введите данные для создания задачи");
+    } else {
+        cart.createCart(1, inputAuthor.value, inputTask.value, date);
+        inputTask.value = "";
+        inputAuthor.value = "";
+        const delCart = document.querySelector('.delete-cart');
+        const carts = document.querySelector('.cart');
+        cart.deleteCart(delCart, carts);
+    }
+});
+
 
 function createId(salt) {
-    const result = `PON-${Math.random(salt) * 36}`;
+    const result = `PON-${Math.random(salt) * 4}`;
     console.log(result);
     return result;
 }
@@ -45,4 +67,3 @@ function randomColor() {
     return Math.round(0xffffff * Math.random().toString(16));
 }
 
-console.log(randomColor())
